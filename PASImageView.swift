@@ -88,6 +88,7 @@ public class PASImageView : UIView, URLSessionDownloadDelegate {
     
     public var cacheEnabled                = true
     public var delegate                    :PASImageViewDelegate?
+    public var image: UIImage?
     
     private var backgroundLayer             = CAShapeLayer()
     private var progressLayer               = CAShapeLayer()
@@ -183,7 +184,7 @@ public class PASImageView : UIView, URLSessionDownloadDelegate {
         
     }
     
-    private func update(image: UIImage?, animated: Bool) {
+    public func update(image: UIImage?, animated: Bool) {
         
         
         let duration    = (animated) ? 0.3 : 0.0
@@ -192,6 +193,7 @@ public class PASImageView : UIView, URLSessionDownloadDelegate {
         containerImageView.transform   = CGAffineTransform(scaleX: 0, y: 0)
         containerImageView.alpha       = 0.0
         if let image = image {
+            self.image = image
             containerImageView.image = image
         }
         
